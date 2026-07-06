@@ -1,0 +1,60 @@
+# ==============================
+# Python Virtual Environment
+# ==============================
+venv/
+.venv/
+env/
+
+# ==============================
+# Python Cache / Compiled Files
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==============================
+# Database Files
+# ==============================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==============================
+# Environment Variables / Secrets
+# ==============================
+.env
+.env.*
+!.env.example
+
+# ==============================
+# Python Tooling / Test Cache
+# ==============================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ==============================
+# Build / Package Files
+# ==============================
+build/
+dist/
+*.egg-info/
+
+# ==============================
+# IDE / Editor Files
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# Operating System Files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Logs
+# ==============================
+*.log
