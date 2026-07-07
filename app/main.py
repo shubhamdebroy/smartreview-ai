@@ -1,8 +1,19 @@
+import logging
+
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.routers.review import router
 from app.database.database import initialize_database
 
-from fastapi.middleware.cors import CORSMiddleware
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+
+logger = logging.getLogger(__name__)
+
 
 app = FastAPI()
 
@@ -14,9 +25,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.on_event("startup")
 async def startup_event():
+    logger.info("SmartReview application startup initiated")
     initialize_database()
+    logger.info("SmartReview database initialized successfully")
+
 
 app.include_router(router)
 
@@ -24,6 +39,7 @@ app.include_router(router)
 @app.get("/")
 async def home():
     return {"message": "Welcome to the SmartReview API!"}
+
 
 @app.get("/health")
 async def health_check():
