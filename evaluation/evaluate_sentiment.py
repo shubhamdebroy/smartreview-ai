@@ -1,8 +1,10 @@
-from app.utils.sentiment_analyzer import analyse_sentiment
+from app.utils.sentiment_analyzer import analyze_sentiment
 
 
 evaluation_dataset = [
-    # Positive reviews
+    # -------------------------
+    # Positive Reviews (15)
+    # -------------------------
     {
         "review": "The battery life is excellent and lasts all day.",
         "expected": "positive"
@@ -43,8 +45,30 @@ evaluation_dataset = [
         "review": "The product exceeded my expectations.",
         "expected": "positive"
     },
+    {
+        "review": "The display is bright and the speakers sound excellent.",
+        "expected": "positive"
+    },
+    {
+        "review": "Setup was quick and everything worked exactly as expected.",
+        "expected": "positive"
+    },
+    {
+        "review": "The software is easy to use and runs flawlessly.",
+        "expected": "positive"
+    },
+    {
+        "review": "Very reliable product with impressive performance.",
+        "expected": "positive"
+    },
+    {
+        "review": "I would definitely recommend this product to others.",
+        "expected": "positive"
+    },
 
-    # Negative reviews
+    # -------------------------
+    # Negative Reviews (15)
+    # -------------------------
     {
         "review": "The battery drains extremely fast and barely lasts a few hours.",
         "expected": "negative"
@@ -85,47 +109,25 @@ evaluation_dataset = [
         "review": "The product failed to meet my expectations.",
         "expected": "negative"
     },
-
-    # Neutral reviews
     {
-        "review": "The phone has a 6.5 inch display.",
-        "expected": "neutral"
+        "review": "The display flickers constantly and is difficult to read.",
+        "expected": "negative"
     },
     {
-        "review": "The package arrived on Monday.",
-        "expected": "neutral"
+        "review": "Installation was complicated and nothing worked correctly.",
+        "expected": "negative"
     },
     {
-        "review": "The laptop includes a charging adapter.",
-        "expected": "neutral"
+        "review": "The software is full of bugs and keeps crashing.",
+        "expected": "negative"
     },
     {
-        "review": "The product is available in three colors.",
-        "expected": "neutral"
+        "review": "I am extremely disappointed with the overall performance.",
+        "expected": "negative"
     },
     {
-        "review": "The battery capacity is 5000 mAh.",
-        "expected": "neutral"
-    },
-    {
-        "review": "The device weighs 180 grams.",
-        "expected": "neutral"
-    },
-    {
-        "review": "The box contains the phone and a USB cable.",
-        "expected": "neutral"
-    },
-    {
-        "review": "The product was released last year.",
-        "expected": "neutral"
-    },
-    {
-        "review": "The laptop has 16 GB of RAM.",
-        "expected": "neutral"
-    },
-    {
-        "review": "The phone uses a USB Type-C port.",
-        "expected": "neutral"
+        "review": "I would not recommend this product to anyone.",
+        "expected": "negative"
     }
 ]
 
@@ -136,7 +138,7 @@ print("\nSmartReview Sentiment Accuracy Evaluation")
 print("=" * 50)
 
 for index, sample in enumerate(evaluation_dataset, start=1):
-    result = analyse_sentiment(sample["review"])
+    result = analyze_sentiment(sample["review"])
 
     predicted = result["sentiment"]
     expected = sample["expected"]
@@ -161,7 +163,7 @@ accuracy = (correct_predictions / total_samples) * 100
 print("\n" + "=" * 50)
 print("Evaluation Summary")
 print("=" * 50)
-print(f"Total samples:       {total_samples}")
-print(f"Correct predictions: {correct_predictions}")
+print(f"Total samples:         {total_samples}")
+print(f"Correct predictions:   {correct_predictions}")
 print(f"Incorrect predictions: {total_samples - correct_predictions}")
-print(f"Accuracy:            {accuracy:.2f}%")
+print(f"Accuracy:              {accuracy:.2f}%")
