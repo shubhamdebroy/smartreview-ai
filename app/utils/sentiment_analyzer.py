@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+MODEL_NAME = "distilbert-base-uncased-finetuned-sst-2-english"
 
 # Lazy-loaded pipeline
 sentiment_pipeline = None
@@ -20,16 +20,21 @@ def get_pipeline():
     return sentiment_pipeline
 
 
-def analyse_sentiment(review: str):
-    pipe = get_pipeline()
+def analyze_sentiment(review: str):
+    classifier = get_pipeline()
 
-    result = pipe(
-        review,
-        truncation=True,
-        max_length=512
-    )[0]
+    result = classifier(review)[0]
+
+    sentiment = result["label"].lower()
+
+    if sentiment == "positive":
+        sentiment = "positive"
+    elif sentiment == "negative":
+        sentiment = "negative"
+    else:
+        sentiment = "neutral"
 
     return {
-        "sentiment": result["label"].lower(),
-        "confidence": result["score"]
+        "sentiment": sentiment,
+        "confidence": round(float(result["score"]), 4),
     }
