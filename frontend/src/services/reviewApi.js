@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://smartreview-ai.up.railway.app/";
+const API_BASE_URL = "https://smartreview-ai.up.railway.app";
 
 const request = async (endpoint, options = {}) => {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
