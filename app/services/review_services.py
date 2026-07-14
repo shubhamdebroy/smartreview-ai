@@ -2,7 +2,7 @@ import logging
 
 from app.schemas.review_schema import ReviewRequest, ReviewResponse, BatchReviewRequest
 from app.repositories.review_repository import save_review, get_all_reviews, get_review_statistics
-from app.utils.sentiment_analyzer import analyse_sentiment
+from app.utils.sentiment_analyzer import analyze_sentiment
 from app.utils.fake_review_detector import detect_fake_review
 from app.utils.topic_extractor import extract_topics
 
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def analyse_review(request: ReviewRequest):
-    sentiment_analysis = analyse_sentiment(request.review)
+    sentiment_analysis = analyze_sentiment(request.review)
     fake_analysis = detect_fake_review(request.review)
     topics = extract_topics(request.review)
 
