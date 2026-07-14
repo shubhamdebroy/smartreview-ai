@@ -37,10 +37,6 @@ async def startup_event():
     initialize_database()
     logger.info("SmartReview database initialized successfully")
 
-    logger.info("Loading sentiment model...")
-    get_pipeline()
-    logger.info("Sentiment model loaded successfully!")
-
     logger.info("SmartReview application ready")
 
 
